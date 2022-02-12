@@ -1,8 +1,11 @@
-package driver;
-import factory.*;
+package tests;
+
+import factory.Activity;
+import factory.ActivityFactory;
 import iterator.CalenderEvents;
-import iterator.TaskManager;
-public class DailyPlannerDriver {
+import iterator.Iterator;
+
+public class IteratorTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -20,9 +23,14 @@ public class DailyPlannerDriver {
 		calenderEvents.addActivity(shopping);
 		calenderEvents.addActivity(party);
 		
-		TaskManager taskManager = new TaskManager(calenderEvents);
+		Iterator iterator = calenderEvents.createIterator();
 		
-		taskManager.printActivity();
+		if(iterator.hasNext()) {
+			System.out.println("Iterator passed");
+		}
+		else {
+			System.out.println("Iterator failed");
+		}
 	}
 
 }
